@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:8080/api/user";
+const API_URL = "https://mern-project-n.onrender.com/api/user";
 
 //使用class就像「服務中心」的概念，AuthService 負責所有「認證」功能。
 class AuthService {
@@ -32,4 +32,5 @@ class AuthService {
   }
 }
 
-export default new AuthService();
+const authServiceInstance = new AuthService();
+export default authServiceInstance;

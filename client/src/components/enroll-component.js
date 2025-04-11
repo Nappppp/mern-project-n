@@ -64,7 +64,7 @@ const EnrollComponent = ({ currentUser, setCurrentUser }) => {
           </button>
         </div>
       )}
-      {currentUser && searchResult && searchResult.length != 0 && (
+      {currentUser && searchResult && searchResult.length !== 0 && (
         <div>
           <p>找到您想要的產品</p>
           {searchResult.map((product) => {

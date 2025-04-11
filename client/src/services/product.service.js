@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:8080/api/products";
+const API_URL = "https://mern-project-n.onrender.com/api/products";
 
 class ProductService {
   post(title, description, price) {
@@ -88,4 +88,5 @@ class ProductService {
   }
 }
 
-export default new ProductService();
+const productServiceInstance = new ProductService();
+export default productServiceInstance;

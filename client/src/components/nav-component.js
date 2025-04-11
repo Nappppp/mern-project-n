@@ -68,7 +68,7 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                         產品頁面
                       </Link>
                     </li>
-                    {currentUser && currentUser.user.role == "買家" && (
+                    {currentUser && currentUser.user.role === "買家" && (
                       <li className="nav-item">
                         <Link className="nav-link" to="/enroll">
                           登記購買產品
