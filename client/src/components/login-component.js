@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const LoginComponent = ({ currentUser, setCurrentUser }) => {
@@ -63,6 +63,9 @@ const LoginComponent = ({ currentUser, setCurrentUser }) => {
         <button onClick={handleLogin} className="btn btn-primary">
           <span>登入</span>
         </button>
+        <br />
+        <br />
+        <Link to="/forgot-password">忘記密碼？</Link>
       </div>
     </div>
   );
