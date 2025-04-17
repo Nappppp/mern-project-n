@@ -91,6 +91,23 @@ const RegisterComponent = () => {
         <button onClick={handleRegister} className="btn btn-primary">
           <span>註冊會員</span>
         </button>
+        <hr></hr>
+
+        <div className="col-md-12 ">
+          <h4>買家</h4>
+          <a
+            className="btn btn-lg btn-google"
+            style={{
+              padding: "0.2rem 0.5rem",
+              backgroundColor: " rgb(7, 7, 7)",
+              color: "rgb(255, 255, 255)",
+            }}
+            href="http://localhost:8080/api/user/google"
+          >
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
+            透過Google登入
+          </a>
+        </div>
       </div>
     </div>
   );
