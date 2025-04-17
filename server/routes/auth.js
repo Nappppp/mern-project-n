@@ -101,11 +101,8 @@ router.get(
 
     // 將用戶資料編碼後作為 URL 參數傳遞
     const encodedData = encodeURIComponent(JSON.stringify(userData));
-    return res.redirect(
-      `${
-        process.env.FRONTEND_URL || "http://localhost:3000"
-      }/profile?data=${encodedData}`
-    );
+    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+    return res.redirect(`${frontendUrl}/profile?data=${encodedData}`);
   }
 );
 
@@ -150,7 +147,9 @@ router.post("/forgot-password", async (req, res) => {
       html: `
         <h2>您請求重置密碼</h2>
         <p>請點擊以下連結重置您的密碼：</p>
-        <a href="https://classy-crepe-291cef.netlify.app/reset-password/${resetToken}">重置密碼</a>
+        <a href="${
+          process.env.FRONTEND_URL || "http://localhost:3000"
+        }/reset-password/${resetToken}">重置密碼</a>
         <p>此連結將在1小時後過期</p>
         <p>如果您沒有請求重置密碼，請忽略此郵件。</p>
       `,

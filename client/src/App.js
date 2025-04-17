@@ -1,5 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import HomeComponent from "./components/home-component";
 import RegisterComponent from "./components/register-component";
@@ -15,6 +21,27 @@ import ResetPasswordComponent from "./components/reset-password-component";
 function App() {
   //判斷是否有註冊，透過AuthService
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+
+  // 處理 Google 登入重定向
+  useEffect(() => {
+    const handleGoogleLogin = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const data = urlParams.get("data");
+      if (data) {
+        try {
+          const userData = JSON.parse(decodeURIComponent(data));
+          if (userData.token && userData.user) {
+            localStorage.setItem("user", JSON.stringify(userData));
+            setCurrentUser(userData.user);
+          }
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+        }
+      }
+    };
+
+    handleGoogleLogin();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -50,7 +77,12 @@ function App() {
           ></Route>
           <Route
             path="reset-password/:token"
-            element={<ResetPasswordComponent />}
+            element={
+              <ResetPasswordComponent
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           ></Route>
           <Route
             path="profile"
