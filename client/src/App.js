@@ -19,10 +19,7 @@ import ForgotPasswordComponent from "./components/forgot-password-component";
 import ResetPasswordComponent from "./components/reset-password-component";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(() => {
-    const userData = AuthService.getCurrentUser();
-    return userData ? userData.user : null;
-  });
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   // 處理 Google 登入重定向
   useEffect(() => {
