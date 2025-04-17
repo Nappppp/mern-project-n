@@ -19,14 +19,12 @@ import ForgotPasswordComponent from "./components/forgot-password-component";
 import ResetPasswordComponent from "./components/reset-password-component";
 
 function App() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
   // 處理 Google 登入重定向
   useEffect(() => {
     const handleGoogleLogin = () => {
-      const urlParams = new URLSearchParams(location.search);
+      const urlParams = new URLSearchParams(window.location.search);
       const data = urlParams.get("data");
       if (data) {
         try {
@@ -44,7 +42,7 @@ function App() {
     };
 
     handleGoogleLogin();
-  }, [location]);
+  }, []);
 
   return (
     <BrowserRouter>
