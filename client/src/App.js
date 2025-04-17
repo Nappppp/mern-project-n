@@ -35,8 +35,8 @@ function App() {
           if (userData.token && userData.user) {
             localStorage.setItem("user", JSON.stringify(userData));
             setCurrentUser(userData.user);
-            // 使用 window.location 而不是 history API
-            window.location.href = "/profile";
+            // 清除 URL 參數
+            window.history.replaceState({}, document.title, "/profile");
           }
         } catch (error) {
           console.error("Error parsing user data:", error);
@@ -45,7 +45,7 @@ function App() {
     };
 
     handleGoogleLogin();
-  }, [setCurrentUser]);
+  }, []);
 
   return (
     <BrowserRouter>
