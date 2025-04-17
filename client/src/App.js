@@ -9,6 +9,8 @@ import PostProductComponent from "./components/postProduct-component";
 import ProductComponent from "./components/product-component";
 import AuthService from "./services/auth.service";
 import EnrollComponent from "./components/enroll-component";
+import ForgotPasswordComponent from "./components/forgot-password-component";
+import ResetPasswordComponent from "./components/reset-password-component";
 
 function App() {
   //判斷是否有註冊，透過AuthService
@@ -41,6 +43,14 @@ function App() {
                 setCurrentUser={setCurrentUser}
               />
             }
+          ></Route>
+          <Route
+            path="forgot-password"
+            element={<ForgotPasswordComponent />}
+          ></Route>
+          <Route
+            path="reset-password/:token"
+            element={<ResetPasswordComponent />}
           ></Route>
           <Route
             path="profile"
