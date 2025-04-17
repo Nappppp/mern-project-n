@@ -28,6 +28,12 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  resetPasswordToken: {
+    type: String,
+  },
+  resetPasswordExpires: {
+    type: Date,
+  },
 });
 
 userSchema.methods.isBuyer = function () {

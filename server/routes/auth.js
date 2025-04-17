@@ -170,10 +170,18 @@ router.post("/reset-password/:token", async (req, res) => {
     const { token } = req.params;
     const { password } = req.body;
 
+    console.log("收到重置密碼請求，token:", token);
+    console.log("當前時間:", new Date());
+
     const user = await User.findOne({
       resetPasswordToken: token,
       resetPasswordExpires: { $gt: Date.now() },
     });
+
+    console.log("找到的用戶:", user ? "存在" : "不存在");
+    if (user) {
+      console.log("token 過期時間:", new Date(user.resetPasswordExpires));
+    }
 
     if (!user) {
       return res.status(400).send("密碼重置連結無效或已過期");

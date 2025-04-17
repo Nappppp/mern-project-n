@@ -27,10 +27,13 @@ const ResetPasswordComponent = () => {
     }
 
     try {
+      console.log("發送重置密碼請求，token:", token);
+      console.log("API URL:", `${API_URL}/api/auth/reset-password/${token}`);
       const response = await axios.post(
         `${API_URL}/api/user/reset-password/${token}`,
         { password }
       );
+      console.log("重置密碼響應:", response.data);
       setMessage(response.data);
       setError("");
       // 3秒後跳轉到登入頁面
@@ -38,6 +41,7 @@ const ResetPasswordComponent = () => {
         navigate("/login");
       }, 3000);
     } catch (err) {
+      console.error("重置密碼錯誤:", err.response?.data || err);
       setError(err.response?.data || "重置密碼時發生錯誤");
       setMessage("");
     }
