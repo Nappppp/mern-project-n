@@ -28,6 +28,7 @@ module.exports = (passport) => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        //重定向 URL 是硬編碼
         callbackURL:
           process.env.GOOGLE_CALLBACK_URL ||
           "http://localhost:8080/api/user/google/redirect",
