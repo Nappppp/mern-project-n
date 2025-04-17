@@ -8,6 +8,7 @@ const productsRoute = require("./routes").product;
 const passport = require("passport");
 require("./config/passport")(passport);
 const cors = require("cors");
+const port = process.env.PORT || 8080;
 
 //db
 mongoose
@@ -34,6 +35,6 @@ app.use(
   productsRoute
 );
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log("後端伺服器正在聆聽port:8080");
 });
