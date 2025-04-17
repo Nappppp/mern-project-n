@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "nodemailer": "^6.10.1",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}

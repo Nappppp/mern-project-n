@@ -16,7 +16,7 @@ const ForgotPasswordComponent = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/user/forgot-password",
+        "https://mern-project-n.onrender.com/api/user/forgot-password",
         { email }
       );
       setMessage(response.data);

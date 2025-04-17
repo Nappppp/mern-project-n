@@ -27,7 +27,7 @@ const ResetPasswordComponent = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/user/reset-password/${token}`,
+        `https://mern-project-n.onrender.com/api/user/reset-password/${token}`,
         { password }
       );
       setMessage(response.data);
