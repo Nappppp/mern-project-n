@@ -31,8 +31,20 @@ function App() {
           const userData = JSON.parse(decodeURIComponent(data));
           console.log("Google 登入資料:", userData);
           if (userData.token && userData.user) {
-            localStorage.setItem("user", JSON.stringify(userData));
-            setCurrentUser(userData.user);
+            // 統一資料結構
+            const normalizedUserData = {
+              token: userData.token,
+              user: {
+                _id: userData.user._id,
+                username: userData.user.username || userData.user.name,
+                email: userData.user.email,
+                role: userData.user.role || "買家", // 預設為買家
+                googleID: userData.user.googleID,
+                thumbnail: userData.user.thumbnail,
+              },
+            };
+            localStorage.setItem("user", JSON.stringify(normalizedUserData));
+            setCurrentUser(normalizedUserData);
             // 清除 URL 參數
             window.history.replaceState({}, document.title, "/profile");
           }
