@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const ForgotPasswordComponent = () => {
@@ -21,6 +21,10 @@ const ForgotPasswordComponent = () => {
       );
       setMessage(response.data);
       setError("");
+      // 3秒後自動導向到登入頁面
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } catch (err) {
       setError(err.response?.data || "發送重置郵件時發生錯誤");
       setMessage("");
@@ -49,6 +53,9 @@ const ForgotPasswordComponent = () => {
           <button type="submit" className="btn btn-primary">
             發送重置連結
           </button>
+          <br />
+          <br />
+          <Link to="/login">返回登入頁面</Link>
         </form>
       </div>
     </div>

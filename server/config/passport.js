@@ -29,7 +29,8 @@ module.exports = (passport) => {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL:
-          "https://mern-project-n.onrender.com/api/user/google/redirect",
+          process.env.GOOGLE_CALLBACK_URL ||
+          "http://localhost:8080/api/user/google/redirect",
       },
       async (accessToken, refreshToken, profile, done) => {
         console.log("進入Google Strategy的區域");
