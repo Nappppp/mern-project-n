@@ -19,7 +19,10 @@ import ForgotPasswordComponent from "./components/forgot-password-component";
 import ResetPasswordComponent from "./components/reset-password-component";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+  const [currentUser, setCurrentUser] = useState(() => {
+    const userData = AuthService.getCurrentUser();
+    return userData ? userData.user : null;
+  });
 
   // 處理 Google 登入重定向
   useEffect(() => {
@@ -32,8 +35,8 @@ function App() {
           if (userData.token && userData.user) {
             localStorage.setItem("user", JSON.stringify(userData));
             setCurrentUser(userData.user);
-            // 清除 URL 參數
-            window.history.replaceState({}, document.title, "/profile");
+            // 使用 window.location 而不是 history API
+            window.location.href = "/profile";
           }
         } catch (error) {
           console.error("Error parsing user data:", error);
