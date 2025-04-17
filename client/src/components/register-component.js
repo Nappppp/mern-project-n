@@ -102,7 +102,7 @@ const RegisterComponent = () => {
               backgroundColor: " rgb(7, 7, 7)",
               color: "rgb(255, 255, 255)",
             }}
-            href="hhttps://mern-project-n.onrender.com/api/user/google"
+            href="https://mern-project-n.onrender.com/api/user/google"
           >
             <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
             透過Google登入
