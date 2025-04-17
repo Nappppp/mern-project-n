@@ -148,7 +148,7 @@ router.post("/forgot-password", async (req, res) => {
       html: `
         <h2>您請求重置密碼</h2>
         <p>請點擊以下連結重置您的密碼：</p>
-        <a href="https://classy-crepe-291cef.netlify.app/${resetToken}">重置密碼</a>
+        <a href="https://classy-crepe-291cef.netlify.app/reset-password/${resetToken}">重置密碼</a>
         <p>此連結將在1小時後過期</p>
         <p>如果您沒有請求重置密碼，請忽略此郵件。</p>
       `,
