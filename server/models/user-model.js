@@ -28,6 +28,7 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  // 重置密碼重要
   resetPasswordToken: {
     type: String,
   },

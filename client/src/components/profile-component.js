@@ -11,22 +11,24 @@ const ProfileComponent = ({ currentUser, setCurrentUser }) => {
             <tbody>
               <tr>
                 <td>
-                  <strong>姓名：{currentUser.user.username}</strong>
+                  <strong>
+                    姓名：{currentUser.user?.username || currentUser.user?.name}
+                  </strong>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <strong>您的用戶ID: {currentUser.user._id}</strong>
+                  <strong>您的用戶ID: {currentUser.user?._id}</strong>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <strong>您註冊的電子信箱: {currentUser.user.email}</strong>
+                  <strong>您註冊的電子信箱: {currentUser.user?.email}</strong>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <strong>您的身份: {currentUser.user.role}</strong>
+                  <strong>您的身份: {currentUser.user?.role}</strong>
                 </td>
               </tr>
             </tbody>

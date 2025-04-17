@@ -29,6 +29,7 @@ function App() {
       if (data) {
         try {
           const userData = JSON.parse(decodeURIComponent(data));
+          console.log("Google 登入資料:", userData);
           if (userData.token && userData.user) {
             localStorage.setItem("user", JSON.stringify(userData));
             setCurrentUser(userData.user);
@@ -36,7 +37,7 @@ function App() {
             window.history.replaceState({}, document.title, "/profile");
           }
         } catch (error) {
-          console.error("Error parsing user data:", error);
+          console.error("解析用戶資料時發生錯誤:", error);
         }
       }
     };
@@ -104,18 +105,18 @@ function App() {
             }
           ></Route>
           <Route
-            path="enroll"
+            path="product/:productId"
             element={
-              <EnrollComponent
+              <ProductComponent
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
             }
           ></Route>
           <Route
-            path="product"
+            path="enroll/:productId"
             element={
-              <ProductComponent
+              <EnrollComponent
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
