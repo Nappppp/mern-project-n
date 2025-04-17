@@ -101,7 +101,9 @@ router.get(
 
     // 將用戶資料編碼後作為 URL 參數傳遞
     const encodedData = encodeURIComponent(JSON.stringify(userData));
-    return res.redirect(`http://localhost:3000/profile?data=${encodedData}`);
+    return res.redirect(
+      `https://classy-crepe-291cef.netlify.app/profile?data=${encodedData}`
+    );
   }
 );
 
