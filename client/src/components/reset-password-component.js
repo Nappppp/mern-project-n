@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 
 const ResetPasswordComponent = () => {
   const [password, setPassword] = useState("");
@@ -27,7 +28,7 @@ const ResetPasswordComponent = () => {
 
     try {
       const response = await axios.post(
-        `https://mern-project-n.onrender.com/api/user/reset-password/${token}`,
+        `${API_URL}/api/user/reset-password/${token}`,
         { password }
       );
       setMessage(response.data);

@@ -1,7 +1,7 @@
 import axios from "axios";
 const API_URL = "https://mern-project-n.onrender.com/api/user";
 
-//使用class就像「服務中心」的概念，AuthService 負責所有「認證」功能。
+///使用class就像「服務中心」的概念，AuthService 負責所有「認證」功能。
 class AuthService {
   login(email, password) {
     return axios.post(API_URL + "/login", {
