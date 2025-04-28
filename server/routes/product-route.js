@@ -96,10 +96,10 @@ router.post("/", async (req, res) => {
 });
 
 // 讓買家透過產品id來登記想要的產品
-router.post("/enroll/:_id", async (req, res) => {
-  let { _id } = req.params;
+router.post("/enroll/:id", async (req, res) => {
+  let { id } = req.params;
   try {
-    let product = await Product.findOne({ _id }).exec();
+    let product = await Product.findOne({ id }).exec();
     product.buyer.push(req.user._id);
     await product.save();
     return res.send("登記完成");
