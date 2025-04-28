@@ -77,7 +77,7 @@ class ProductService {
     }
 
     return axios.post(
-      API_URL + "/enroll/" + _id,
+      API_URL + "/enroll/" + id,
       {},
       {
         headers: {
