@@ -117,7 +117,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="product/:productId"
+            path="product"
             element={
               <ProductComponent
                 currentUser={currentUser}
@@ -126,7 +126,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="enroll/:productId"
+            path="enroll"
             element={
               <EnrollComponent
                 currentUser={currentUser}
