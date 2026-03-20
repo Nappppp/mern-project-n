@@ -60,7 +60,7 @@ const EnrollComponent = ({ currentUser, setCurrentUser }) => {
             onChange={handleChangeInput}
           />
           <button onClick={handleSearch} className="btn btn-primary">
-            搜尋課程
+            搜尋產品
           </button>
         </div>
       )}
@@ -108,3 +108,4 @@ const EnrollComponent = ({ currentUser, setCurrentUser }) => {
 };
 
 export default EnrollComponent;
+
