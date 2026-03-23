@@ -25,13 +25,19 @@ const EditProductComponent = ({ currentUser }) => {
   };
 
   const handleUpdate = () => {
-    ProductService.patch(_id, product) // 呼叫更新 API
-      .then(() => {
-        window.alert("更新成功！");
-        navigate("/product"); // 回到產品清單
-      })
-      .catch((err) => console.log(err));
+  const payload = {
+    title: product.title,
+    description: product.description,
+    price: product.price,
   };
+  
+  ProductService.patch(_id, payload)
+    .then(() => {
+      window.alert("更新成功！");
+      navigate("/product");
+    })
+    .catch((err) => console.log(err));
+};
 
   return (
     <div style={{ padding: "3rem" }}>
