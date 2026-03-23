@@ -43,7 +43,7 @@ class ProductService {
     });
   }
 
-  // 新增：用產品 ID 取得單一產品（EditProductComponent 需要）
+  // 用產品 ID 取得單一產品（EditProductComponent 需要）
   getById(_id) {
     return axios.get(API_URL + "/" + _id, {
       headers: this.getHeaders(),
@@ -55,15 +55,22 @@ class ProductService {
       headers: this.getHeaders(),
     });
   }
+  
+  //取消登記產品
+  unenroll(_id) {
+    return axios.post(API_URL + "/unenroll/" + _id, {}, {
+      headers: this.getHeaders(),
+    });
+  }
 
-  // 新增：更新產品（EditProductComponent 需要）
+  // 更新產品（EditProductComponent 需要）
   patch(_id, productData) {
     return axios.patch(API_URL + "/" + _id, productData, {
       headers: this.getHeaders(),
     });
   }
 
-  // 新增：刪除產品（ProductComponent 需要）
+  //刪除產品（ProductComponent 需要）
   delete(_id) {
     return axios.delete(API_URL + "/" + _id, {
       headers: this.getHeaders(),
