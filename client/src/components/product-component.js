@@ -34,7 +34,6 @@ const ProductComponent = ({ currentUser, setCurrentUser }) => {
     navigate("/login");
   };
 
-  // --- 新增處理邏輯 ---
   const handleEdit = (_id) => {
     // 導向修改頁面，並帶上產品 ID (這需要你另外建立 EditProduct 路由)
     navigate(`/editProduct/${_id}`);
@@ -53,7 +52,20 @@ const ProductComponent = ({ currentUser, setCurrentUser }) => {
         });
     }
   };
-  // ------------------
+
+
+  //買家可以取消產品登記
+  const handleUnenroll = (_id) => {
+  if (window.confirm("確定要取消登記這件商品嗎？")) {
+    ProductService.unenroll(_id)
+      .then(() => {
+        window.alert("已取消登記");
+        setProductData(productData.filter((p) => p._id !== _id));
+      })
+      .catch((e) => console.log(e));
+  }
+};
+
 
   return (
     <div style={{ padding: "3rem" }}>
@@ -81,7 +93,6 @@ const ProductComponent = ({ currentUser, setCurrentUser }) => {
                   <p>買家人數: {product.buyer.length}</p>
                   <p>產品價格: {product.price}</p>
 
-                  {/* --- 核心邏輯：如果是廠商，則顯示按鈕 --- */}
                   {currentUser.user.role === "廠商" && (
                     <div style={{ display: "flex", gap: "10px", marginTop: "1rem" }}>
                       <button 
@@ -98,7 +109,14 @@ const ProductComponent = ({ currentUser, setCurrentUser }) => {
                       </button>
                     </div>
                   )}
-                  {/* ------------------------------------- */}
+
+                {currentUser.user.role === "買家" && (
+                  <div style={{ marginTop: "1rem" }}>
+                    <button onClick={() => handleUnenroll(product._id)} className="btn btn-outline-danger">
+                      取消登記
+                    </button>
+                  </div>
+                )}
                 </div>
               </div>
             );
