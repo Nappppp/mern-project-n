@@ -17,7 +17,7 @@ import AuthService from "./services/auth.service";
 import EnrollComponent from "./components/enroll-component";
 import ForgotPasswordComponent from "./components/forgot-password-component";
 import ResetPasswordComponent from "./components/reset-password-component";
-import EditProductComponent from "./components/edit-Product-component";
+import EditProductComponent from "./components/Edit-Product-Component";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
