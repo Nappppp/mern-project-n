@@ -126,6 +126,15 @@ function App() {
             }
           ></Route>
           <Route
+            path="editProduct/:_id"
+            element={
+              <EditProductComponent
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          ></Route>
+          <Route
             path="enroll"
             element={
               <EnrollComponent
