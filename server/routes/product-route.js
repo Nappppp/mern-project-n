@@ -108,6 +108,26 @@ router.post("/enroll/:_id", async (req, res) => {
   }
 });
 
+// 讓買家取消登記產品
+router.post("/unenroll/:_id", async (req, res) => {
+  let { _id } = req.params;
+  try {
+    let product = await Product.findOne({ _id }).exec();
+    if (!product) {
+      return res.status(400).send("找不到商品。");
+    }
+    // 從 buyer 陣列中移除此買家的 id
+    product.buyer = product.buyer.filter(
+      (buyerId) => !buyerId.equals(req.user._id)
+    );
+    await product.save();
+    return res.send("已取消登記");
+  } catch (e) {
+    return res.status(500).send(e);
+  }
+});
+
+
 // 更改產品
 router.patch("/:_id", async (req, res) => {
   // 驗證數據符合規範
