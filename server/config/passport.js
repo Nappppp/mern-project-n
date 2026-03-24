@@ -34,10 +34,12 @@ module.exports = (passport) => {
           "http://localhost:8080/api/user/google/redirect",
       },
       async (accessToken, refreshToken, profile, done) => {
+        console.log("profile.id:", profile.id);  // 加這行
         console.log("進入Google Strategy的區域");
         console.log("Profile:", profile);
         try {
           let foundUser = await User.findOne({ googleID: profile.id }).exec();
+          console.log("foundUser:", foundUser);  // 加這行
           if (foundUser) {
             console.log("使用者已經註冊過了。無須存入資料庫內。");
             done(null, foundUser);
