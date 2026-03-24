@@ -102,7 +102,7 @@ const EnrollComponent = ({ currentUser, setCurrentUser }) => {
                   <p style={{ margin: "0.5rem 0rem" }}>產品價格: {product.price}</p>
                   <p style={{ margin: "0.5rem 0rem" }}>廠商資訊: {product.manufacturer.username}</p>
                   
-                    href="#"
+                  <a href="#"
                     id={product._id}
                     className="card-text btn btn-primary"
                     onClick={handleEnroll}
