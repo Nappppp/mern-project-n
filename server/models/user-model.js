@@ -28,7 +28,6 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-   // 新增這兩個欄位
   googleID: {
     type: String,
     default: null,
