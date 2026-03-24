@@ -43,10 +43,24 @@ router.get("/buyer/:_buyer_id", async (req, res) => {
 });
 
 // 用產品稱尋找產品
+// router.get("/findByName/:name", async (req, res) => {
+//   let { name } = req.params;
+//   try {
+//     let productFound = await Product.find({ title: name })
+//       .populate("manufacturer", ["email", "username"])
+//       .exec();
+//     return res.send(productFound);
+//   } catch (e) {
+//     return res.status(500).send(e);
+//   }
+// });
+
 router.get("/findByName/:name", async (req, res) => {
   let { name } = req.params;
   try {
-    let productFound = await Product.find({ title: name })
+    let productFound = await Product.find({ 
+      title: { $regex: name, $options: "i" }  // i = 不區分大小寫
+    })
       .populate("manufacturer", ["email", "username"])
       .exec();
     return res.send(productFound);
