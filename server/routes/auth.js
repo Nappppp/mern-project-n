@@ -61,17 +61,31 @@ router.post("/login", async (req, res) => {
   foundUser.comparePassword(req.body.password, (err, isMatch) => {
     if (err) return res.status(500).send(err);
 
+    // if (isMatch) {
+    //   // 製作json web token
+    //   const tokenObject = { _id: foundUser._id, email: foundUser.email };
+    //   const token = jwt.sign(tokenObject, process.env.PASSPORT_SECRET);
+    //   return res.send({
+    //     message: "成功登入",
+    //     token: "JWT " + token,
+    //     user: foundUser,
+    //   });
+    // } else {
+    //   return res.status(401).send("密碼錯誤");
+    // }
     if (isMatch) {
-      // 製作json web token
       const tokenObject = { _id: foundUser._id, email: foundUser.email };
       const token = jwt.sign(tokenObject, process.env.PASSPORT_SECRET);
       return res.send({
         message: "成功登入",
         token: "JWT " + token,
-        user: foundUser,
+        user: {
+          _id: foundUser._id,
+          username: foundUser.username,
+          email: foundUser.email,
+          role: foundUser.role,
+        },
       });
-    } else {
-      return res.status(401).send("密碼錯誤");
     }
   });
 });
