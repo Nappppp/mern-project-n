@@ -28,6 +28,15 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+   // 新增這兩個欄位
+  googleID: {
+    type: String,
+    default: null,
+  },
+  thumbnail: {
+    type: String,
+    default: null,
+  },
   // 重置密碼重要
   resetPasswordToken: {
     type: String,
