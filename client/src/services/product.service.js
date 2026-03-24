@@ -49,6 +49,12 @@ class ProductService {
       headers: this.getHeaders(),
     });
   }
+ // 搜尋全部 
+  getAll() {
+    return axios.get(API_URL, {
+      headers: this.getHeaders(),
+    });
+  }
 
   enroll(_id) {
     return axios.post(API_URL + "/enroll/" + _id, {}, {
